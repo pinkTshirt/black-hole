@@ -37,13 +37,14 @@ jobs:
         shell: pwsh
         run: echo "VCPKG_ROOT=$env:VCPKG_INSTALLATION_ROOT" >> $env:GITHUB_ENV
 
-      - name: Install Linux native deps (X11/OpenGL headers for GLFW/GLEW)
+      - name: Install Linux native deps (X11/OpenGL/GLU headers for GLFW/GLEW)
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
           sudo apt-get install -y \
             build-essential \
             libgl1-mesa-dev \
+            libglu1-mesa-dev \
             libx11-dev \
             libxrandr-dev \
             libxinerama-dev \
